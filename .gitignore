@@ -1,0 +1,30 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+
+# Virtual environment folder
+env/
+venv/
+.venv/
+
+# Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env
+.env.local
+*.env
+
+# Log files
+*.log
+
+# Data folder - ignore everything inside data
+data/*
+
+# Dash-specific cache and config files
+dash_cache/
+config.yaml
