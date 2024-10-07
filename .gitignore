@@ -25,6 +25,8 @@ Thumbs.db
 # Data folder - ignore everything inside data
 data/*
 
+notebooks/*
+
 # Dash-specific cache and config files
 dash_cache/
 config.yaml
