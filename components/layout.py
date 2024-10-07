@@ -5,7 +5,7 @@ from components.map_figure import create_map_figure
 # Create the layout
 def create_layout(app):
     # Path to your data files
-    pop_data_path = "./data/pop.csv"
+    pop_data_path = "./data/pop_parsed.csv"
     geojson_path = "./data/brazil_geo_2022.json"
 
     # Generate the map figure

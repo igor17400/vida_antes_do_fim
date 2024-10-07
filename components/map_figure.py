@@ -7,37 +7,6 @@ def create_map_figure(pop_data_path, geojson_path):
     # Load population data
     pop = pd.read_csv(pop_data_path)
 
-    # Remove accents and normalize string columns
-    pop = pop.apply(
-        lambda x: (
-            x.str.normalize("NFKD").str.encode("ascii", errors="ignore").str.decode("utf-8")
-            if x.dtype == "object"
-            else x
-        )
-    )
-
-    # Remove the first row if necessary
-    pop = pop.iloc[1:]
-
-    # Ensure the 'V' column is numeric, forcing errors to NaN
-    pop["V"] = pd.to_numeric(pop["V"], errors="coerce")
-
-    # Pivot table to organize the data
-    pop = pop.pivot_table(index=["D1C", "D1N"], columns="D3N", values="V").reset_index()
-    pop.columns.name = None
-
-    # Define a mapping for column names
-    column_mapping = {
-        "D1C": "CD_MUN",
-        "D1N": "NM_MUN",
-        "Populacao residente": "POP_RESIDENTE",
-        "Variacao absoluta da populacao residente 2010 compatibilizada": "VAR_ABS",
-        "Taxa de crescimento geometrico": "TX_CRESC",
-    }
-
-    # Rename columns
-    pop = pop.rename(columns=column_mapping)
-
     # Read GeoJSON file for Brazil
     with open(geojson_path, "r", encoding="utf-8") as file:
         geo_json = json.load(file)
