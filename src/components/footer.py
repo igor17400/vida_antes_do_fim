@@ -56,7 +56,7 @@ footer = html.Footer(
                                     html.Img(
                                         src="https://img.icons8.com/ios-filled/24/FFF5E0/github.png",
                                     ),
-                                    href="https://github.com",
+                                    href="https://github.com/igor17400/vida_antes_do_fim",
                                     target="_blank",
                                     className="icons",
                                 ),

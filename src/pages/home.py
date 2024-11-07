@@ -82,22 +82,30 @@ layout = html.Div(
                 ),
             ],
         ),
+        html.Div(
+            className="section-title",
+            children=[html.H1("Indigenous Populations - Brasil"), html.Div(className="underline")],
+        ),
+        html.Div(
+            className="section-title",
+            children=[html.H1("What next?"), html.Div(className="underline")],
+        ),
         # Call-to-action buttons
         html.Div(
             [
                 html.A(
                     html.Button(
-                        "View Research Papers",
-                        className="cta-button cta-button-primary",
+                        "About Indigenous Populations",
+                        className="cta-button cta-button-secondary",
                     ),
-                    href="/papers",
+                    href="/indigenous_populations",
                 ),
                 html.A(
                     html.Button(
-                        "About the Project",
-                        className="cta-button cta-button-secondary",
+                        "View Research Papers",
+                        className="cta-button cta-button-primary",
                     ),
-                    href="/about",
+                    href="/research_papers",
                 ),
             ],
             className="cta-buttons-container",

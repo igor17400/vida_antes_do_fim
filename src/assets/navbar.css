@@ -1,0 +1,67 @@
+/* Custom styling for the navbar */
+.navbar-custom {
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--color-first) !important;
+    padding: 1rem 2rem;
+    margin-bottom: 0em;
+    color: var(--color-fourth) !important;
+    z-index: 1000;
+    width: 100%;
+    position: fixed;
+    visibility: hidden;
+    /* Initially hide the navbar */
+    opacity: 0;
+    /* Make it fully transparent */
+    transition: background-color 0.3s ease;
+}
+
+/* Add styles for the active state of the navbar */
+.navbar-active {
+    visibility: visible;
+    /* Make the navbar visible */
+    opacity: 1;
+    /* Fully opaque */
+}
+
+/* Custom navigation link styles */
+.nav-link-custom {
+    color: var(--color-fourth) !important;
+    /* Use the first color for nav links */
+    font-size: 1.1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    transition: background-color 0.3s ease, font-style 0.3s ease;
+    /* Transition for background color and font style */
+    padding: 8px 12px;
+    /* Add padding for the link */
+    border-radius: 5px;
+    /* Rounded corners */
+}
+
+/* Specific styles for the logo link to prevent inheriting button styles */
+.logo-link {
+    background-color: transparent;
+    /* No background */
+    padding: 0;
+    /* Remove padding */
+    font-weight: normal;
+    /* Reset font weight */
+    color: inherit;
+    /* Inherit color from parent or define a specific color */
+}
+
+/* Optionally, you can define hover effects for the logo link */
+.logo-link:hover {
+    background-color: transparent;
+    /* Ensure hover does not apply any background */
+}
+
+
+/* Hover effect for nav links */
+.nav-link-custom:hover {
+    text-decoration: underline;
+    font-style: italic;
+    background-color: transparent;
+}

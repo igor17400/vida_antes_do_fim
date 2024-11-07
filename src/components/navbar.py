@@ -39,7 +39,7 @@ navbar = dbc.Navbar(
                         dbc.NavItem(
                             dbc.NavLink(
                                 "Research Papers",
-                                href="/research-papers",
+                                href="/research_papers",
                                 className="nav-link-custom",
                             )
                         ),

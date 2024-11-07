@@ -93,7 +93,7 @@ p {
 /* Buttons style */
 .icons {
     color: white;
-    background-color: var(--color-second);
+    background-color: var(--color-third);
     padding: 10px 20px;
     border-radius: 5px;
     text-decoration: none;
@@ -103,78 +103,8 @@ p {
 }
 
 .icons:hover {
-    background-color: var(--color-third);
+    background-color: var(--color-second);
 }
-
-
-/* Custom styling for the navbar */
-.navbar-custom {
-    top: 0;
-    left: 0;
-    right: 0;
-    background-color: var(--color-first) !important;
-    padding: 1rem 2rem;
-    margin-bottom: 0em;
-    color: var(--color-fourth) !important;
-    z-index: 1000;
-    width: 100%;
-    position: fixed;
-    visibility: hidden;
-    /* Initially hide the navbar */
-    opacity: 0;
-    /* Make it fully transparent */
-    transition: background-color 0.3s ease;
-}
-
-/* Add styles for the active state of the navbar */
-.navbar-active {
-    visibility: visible;
-    /* Make the navbar visible */
-    opacity: 1;
-    /* Fully opaque */
-}
-
-/* Custom navigation link styles */
-.nav-link-custom {
-    color: var(--color-fourth) !important;
-    /* Use the first color for nav links */
-    font-size: 1.1rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    transition: background-color 0.3s ease, font-style 0.3s ease;
-    /* Transition for background color and font style */
-    padding: 8px 12px;
-    /* Add padding for the link */
-    border-radius: 5px;
-    /* Rounded corners */
-}
-
-/* Specific styles for the logo link to prevent inheriting button styles */
-.logo-link {
-    background-color: transparent;
-    /* No background */
-    padding: 0;
-    /* Remove padding */
-    font-weight: normal;
-    /* Reset font weight */
-    color: inherit;
-    /* Inherit color from parent or define a specific color */
-}
-
-/* Optionally, you can define hover effects for the logo link */
-.logo-link:hover {
-    background-color: transparent;
-    /* Ensure hover does not apply any background */
-}
-
-
-/* Hover effect for nav links */
-.nav-link-custom:hover {
-    text-decoration: underline;
-    font-style: italic;
-    background-color: transparent;
-}
-
 
 /* Custom styles for the divider line */
 .divider-line {
@@ -287,13 +217,24 @@ p {
 }
 
 .cta-button {
-    padding: 1rem 2rem;
-    font-size: 1.1rem;
-    border: none;
-    border-radius: 5px;
+    background-color: var(--color-first);
+    border: 2px solid var(--color-third);
+    border-radius: 30px;
+    box-shadow:  var(--color-fourth) 4px 4px 0 0;
+    color:  var(--color-third);
     cursor: pointer;
+    display: inline-block;
+    font-weight: 600;
+    font-size: 18px;
+    padding: 0 18px;
+    line-height: 50px;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
     margin: 1rem;
-    color: white;
+    /* Keep margin for spacing */
 }
 
 .cta-button-primary {
@@ -411,6 +352,73 @@ p {
     border-left: 4px solid #ccc;
     padding-left: 1rem;
     color: #555;
+}
+
+info-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    border-radius: 8px;
+}
+
+.papers-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    /* Adjust the gap between cards as needed */
+    justify-items: center;
+    /* Center the cards horizontally */
+    padding: 20px;
+    /* Add padding around the container */
+}
+
+.page-top {
+    padding-top: 4rem;
+}
+
+.research-papers-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 20px auto;
+    max-width: 800px;
+    padding: 10px;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+.research-papers-container p {
+    font-size: 16px;
+}
+
+@media (min-width: 1200px) {
+    .papers-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (min-width: 900px) and (max-width: 1199px) {
+    .papers-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 600px) and (max-width: 899px) {
+    .papers-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 599px) {
+    .papers-container {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* Custom styling for mobile screens */
