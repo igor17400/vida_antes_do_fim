@@ -213,7 +213,7 @@ p {
 /* Call-to-action buttons */
 .cta-buttons-container {
     text-align: center;
-    margin: 3rem 0;
+    margin: 1rem 0;
 }
 
 .cta-button {
@@ -297,7 +297,7 @@ p {
 .section-title {
     text-align: center;
     position: relative;
-    margin-bottom: 2rem;
+    margin-top: 2rem;
 }
 
 .section-title h1 {
@@ -395,6 +395,18 @@ info-modal {
 
 .research-papers-container p {
     font-size: 16px;
+}
+
+.indigenous-map {
+    margin: 4rem auto;
+    padding: 4rem auto;
+}
+
+.about-container {
+    display: flex;
+    align-items: center;
+    padding: 0 4rem;
+    gap: 20px;
 }
 
 @media (min-width: 1200px) {

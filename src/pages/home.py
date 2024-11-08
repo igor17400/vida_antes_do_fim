@@ -1,6 +1,7 @@
 # package imports
 import dash
 from dash import html, dcc, callback, Input, Output
+import dash_bootstrap_components as dbc
 from components.indigenous_map import create_indigenous_map
 
 dash.register_page(
@@ -27,7 +28,7 @@ layout = html.Div(
                             className="hero-title",
                         ),
                         html.P(
-                            "Preserving Indigenous People, Culture and Language Through Technology",
+                            "How can we preserve Indigenous People, Culture and Language Through Technology?",
                             className="hero-subtitle",
                         ),
                     ],
@@ -90,14 +91,51 @@ layout = html.Div(
                 html.Div(className="underline"),
             ],
         ),
-        # Add the map here
-        dcc.Graph(
-            figure=create_indigenous_map(),  # Use the map function to get the figure
+        html.Div(
+            children=[
+                html.P(
+                    "One of the ways we can learn about Indigenous communities is by learning about their culture specially with a knowledge from where they live.",
+                    style={"text-align": "center"},
+                ),
+                html.P(
+                    "Click on any region to learn more about the indigenous community from that place",
+                    style={"text-align": "center"},
+                ),
+            ],
+            style={"width": "100%", "text-align": "center"},
+        ),
+        # Add the map here with loading spinner
+        html.Div(
+            id="indigenous-map",
             className="indigenous-map",
+            children=[
+                dcc.Loading(
+                    id="loading-map",
+                    type="circle",  # You can choose "default", "circle", or "dot"
+                    children=[
+                        dcc.Graph(
+                            id="indigenous-map-graph",
+                            figure=create_indigenous_map(),
+                        )
+                    ],
+                )
+            ],
+        ),
+        # Modal for displaying region information
+        dbc.Modal(
+            [
+                dbc.ModalHeader(dbc.ModalTitle("Region Information")),
+                dbc.ModalBody(id="modal-body"),
+                dbc.ModalFooter(
+                    dbc.Button("Close", id="close-modal", className="ml-auto")
+                ),
+            ],
+            id="region-modal",
+            is_open=False,
         ),
         html.Div(
             className="section-title",
-            children=[html.H1("What next?"), html.Div(className="underline")],
+            children=[html.H1("About The Project"), html.Div(className="underline")],
         ),
         # Call-to-action buttons
         html.Div(
@@ -119,5 +157,49 @@ layout = html.Div(
             ],
             className="cta-buttons-container",
         ),
+        html.Div(
+            className="about-container",
+            children=[
+                html.Img(
+                    src="/assets/cards/ind1.jpg",  # Ensure the path is correct
+                    className="indigenous-man",
+                ),
+                html.P(
+                    "This project aims to compile and summarize the numerous works and contributions dedicated to the preservation and support of Indigenous communities. By gathering these resources in one place, we hope to make it easier for people to explore the ways in which science, technology, and various initiatives have worked towards uplifting Indigenous groups. Whether you're a researcher, activist, or someone simply interested in learning more, this collection offers a wide range of insights into how Indigenous knowledge and cultures are being preserved and integrated into modern advancements.",
+                    style={"text-align": "center"},
+                ),
+                html.P(
+                    "Additionally, our goal is to increase awareness and understanding of Indigenous cultures by providing a platform that highlights the rich history, traditions, and ongoing struggles of these communities. Through this project, we aim to shed light on the importance of preserving Indigenous heritage, not just for the communities themselves but for the world at large. We hope that this resource will inspire further research, collaboration, and support for Indigenous peoples globally, promoting a deeper connection to their cultural significance and the challenges they face.",
+                    style={"text-align": "center"},
+                ),
+            ],
+        ),
     ],
 )
+
+
+# Callback to update the modal content and open it based on map click
+@callback(
+    [Output("modal-body", "children"), Output("region-modal", "is_open")],
+    [Input("indigenous-map-graph", "clickData"), Input("close-modal", "n_clicks")],
+    [dash.dependencies.State("region-modal", "is_open")],
+)
+def display_region_info(clickData, n_clicks, is_open):
+    if clickData:
+        # Extract the index of the clicked region
+        point_index = clickData["points"][0]["pointIndex"]
+
+        # Retrieve information about the clicked region
+        region_info = {
+            0: "Information about region 0",
+            1: "Information about region 1",
+            # Add more entries as needed
+        }
+
+        info = region_info.get(point_index, "No information available for this region.")
+        return info, True
+
+    if n_clicks:
+        return dash.no_update, not is_open
+
+    return dash.no_update, is_open

@@ -18,7 +18,7 @@ footer = html.Footer(
                                     className="footer-text",
                                 ),
                                 html.P(
-                                    "Preserving indigenous people, culture and language.",
+                                    "How can we preserve Indigenous People, Culture and Language Through Technology?",
                                     className="footer-subtext",
                                 ),
                                 html.P(

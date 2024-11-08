@@ -6,7 +6,7 @@ import plotly.express as px
 def create_indigenous_map():
     df = pd.read_csv("../large_files/tis_poligonais.csv")
     # Convert the 'the_geom' column from WKT to a geometry object
-    df = df.iloc[:100]
+    df = df.iloc[:50]
     df["geometry"] = df["the_geom"].apply(lambda x: wkt.loads(x) if pd.notnull(x) else None)
 
     # Create a GeoDataFrame

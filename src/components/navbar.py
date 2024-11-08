@@ -43,6 +43,13 @@ navbar = dbc.Navbar(
                                 className="nav-link-custom",
                             )
                         ),
+                        dbc.NavItem(
+                            dbc.NavLink(
+                                "References",
+                                href="/references",
+                                className="nav-link-custom",
+                            )
+                        ),
                     ],
                     className="ms-auto",  # Align the navigation links to the right
                     navbar=True,
