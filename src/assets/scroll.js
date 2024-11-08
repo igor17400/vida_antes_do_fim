@@ -1,6 +1,8 @@
 const observer = new MutationObserver((mutations, obs) => {
     const heroContainer = document.querySelector(".hero-container");
     const navbar = document.querySelector(".navbar-custom");
+    var currentPath = window.location.pathname;
+
     if (heroContainer && navbar) {
         window.addEventListener("scroll", function () {
             const heroBottom = heroContainer.getBoundingClientRect().bottom;
@@ -13,6 +15,8 @@ const observer = new MutationObserver((mutations, obs) => {
         });
 
         obs.disconnect(); // Stop observing once the elements are found
+    } else if (navbar && currentPath !== '/') {
+        navbar.classList.add("navbar-active");
     }
 });
 

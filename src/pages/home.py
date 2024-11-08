@@ -110,7 +110,11 @@ layout = html.Div(
         html.Div(
             className="indigenous-map",
             children=[
-                html.Div(id="loading-message", className="loading-message", children="Loading data..."),
+                html.Div(
+                    id="loading-message",
+                    className="loading-message",
+                    children="Loading data...",
+                ),
                 dcc.Loading(
                     id="loading-data",
                     type="circle",
@@ -129,14 +133,11 @@ layout = html.Div(
                 ),  # Triggers once
             ],
         ),
-        # Modal for displaying region information
+        # Modal for displaying region information without a close button
         dbc.Modal(
             [
                 dbc.ModalHeader(dbc.ModalTitle("Region Information")),
                 dbc.ModalBody(id="modal-body"),
-                dbc.ModalFooter(
-                    dbc.Button("Close", id="close-modal", className="ml-auto")
-                ),
             ],
             id="region-modal",
             is_open=False,
@@ -213,10 +214,10 @@ def load_map(n_intervals):
 # Callback to update the modal content and open it based on map click
 @callback(
     [Output("modal-body", "children"), Output("region-modal", "is_open")],
-    [Input("indigenous-map-graph", "clickData"), Input("close-modal", "n_clicks")],
+    [Input("indigenous-map-graph", "clickData")],
     [dash.dependencies.State("region-modal", "is_open")],
 )
-def display_region_info(clickData, n_clicks, is_open):
+def display_region_info(clickData, is_open):
     if clickData:
         # Extract the index of the clicked region
         point_index = clickData["points"][0]["pointIndex"]
@@ -230,8 +231,5 @@ def display_region_info(clickData, n_clicks, is_open):
 
         info = region_info.get(point_index, "No information available for this region.")
         return info, True
-
-    if n_clicks:
-        return dash.no_update, not is_open
 
     return dash.no_update, is_open
