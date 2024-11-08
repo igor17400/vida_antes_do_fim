@@ -1,6 +1,7 @@
 # package imports
 import dash
 from dash import html, dcc, callback, Input, Output
+from components.indigenous_map import create_indigenous_map
 
 dash.register_page(
     __name__, path="/", redirect_from=["/home"], title="Life Before The End"
@@ -84,7 +85,15 @@ layout = html.Div(
         ),
         html.Div(
             className="section-title",
-            children=[html.H1("Indigenous Populations - Brasil"), html.Div(className="underline")],
+            children=[
+                html.H1("Indigenous Populations - Brasil"),
+                html.Div(className="underline"),
+            ],
+        ),
+        # Add the map here
+        dcc.Graph(
+            figure=create_indigenous_map(),  # Use the map function to get the figure
+            className="indigenous-map",
         ),
         html.Div(
             className="section-title",
