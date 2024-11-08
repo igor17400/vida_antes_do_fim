@@ -398,8 +398,20 @@ info-modal {
 }
 
 .indigenous-map {
+    width: 80%;
     margin: 4rem auto;
     padding: 4rem auto;
+}
+
+.loading-message {
+    font-size: 1.2em; /* Larger font size */
+    color: #ffffff; /* White text color */
+    background-color: var(--color-third); /* Bootstrap primary color */
+    padding: 10px 15px; /* Padding around the text */
+    border-radius: 5px; /* Rounded corners */
+    text-align: center; /* Center the text */
+    margin-bottom: 10px; /* Space below the message */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
 .about-container {

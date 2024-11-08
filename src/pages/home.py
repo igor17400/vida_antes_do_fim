@@ -3,6 +3,8 @@ import dash
 from dash import html, dcc, callback, Input, Output
 import dash_bootstrap_components as dbc
 from components.indigenous_map import create_indigenous_map
+from utils.br_ind_data import load_indigenous_data
+import plotly.graph_objs as go
 
 dash.register_page(
     __name__, path="/", redirect_from=["/home"], title="Life Before The End"
@@ -106,19 +108,25 @@ layout = html.Div(
         ),
         # Add the map here with loading spinner
         html.Div(
-            id="indigenous-map",
             className="indigenous-map",
             children=[
+                html.Div(id="loading-message", className="loading-message", children="Loading data..."),
                 dcc.Loading(
-                    id="loading-map",
-                    type="circle",  # You can choose "default", "circle", or "dot"
+                    id="loading-data",
+                    type="circle",
                     children=[
                         dcc.Graph(
                             id="indigenous-map-graph",
-                            figure=create_indigenous_map(),
+                            figure=go.Figure(),  # Initialize with an empty figure
                         )
                     ],
-                )
+                ),
+                dcc.Interval(
+                    id="interval-component",
+                    interval=1 * 1000,
+                    n_intervals=0,
+                    max_intervals=1,
+                ),  # Triggers once
             ],
         ),
         # Modal for displaying region information
@@ -176,6 +184,30 @@ layout = html.Div(
         ),
     ],
 )
+
+
+# Callback to load the map and update the loading message
+@callback(
+    Output("indigenous-map-graph", "figure"),
+    Output("loading-message", "children"),
+    Input("interval-component", "n_intervals"),
+    prevent_initial_call=True,
+)
+def load_map(n_intervals):
+    # Update loading message
+    loading_message = "The dataset is being loaded..."
+
+    # Load data
+    gdf = load_indigenous_data()
+
+    # Update loading message
+    loading_message = "The visualization graph is being loaded..."
+
+    # Create map
+    fig = create_indigenous_map(gdf)
+
+    # Return the map and final message
+    return fig, "Map loaded successfully!"
 
 
 # Callback to update the modal content and open it based on map click
