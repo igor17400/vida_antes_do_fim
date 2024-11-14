@@ -9,4 +9,4 @@ services:
     volumes:
       - .:/app  # Mount the current directory to the container for live updates
     ports:
-      - "8089:8089"  # Map port 8089 on the host to port 8089 in the container
+      - "8050:8089"  # Map port 8089 on the host to port 8089 in the container

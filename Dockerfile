@@ -16,8 +16,5 @@ COPY . .
 # Expose the port the app runs on
 EXPOSE 8089
 
-# Set the working directory to the src directory
-WORKDIR /app/src
-
 # Run the application
 CMD ["gunicorn", "--config", "gunicorn_config.py", "app:server"]
