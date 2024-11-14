@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  dash_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    expose:
+      - 8089
+    ports:
+      - "8089:8089"

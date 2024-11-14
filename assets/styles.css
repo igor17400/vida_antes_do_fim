@@ -220,8 +220,8 @@ p {
     background-color: var(--color-first);
     border: 2px solid var(--color-third);
     border-radius: 30px;
-    box-shadow:  var(--color-fourth) 4px 4px 0 0;
-    color:  var(--color-third);
+    box-shadow: var(--color-fourth) 4px 4px 0 0;
+    color: var(--color-third);
     cursor: pointer;
     display: inline-block;
     font-weight: 600;
@@ -394,7 +394,8 @@ info-modal {
 }
 
 .research-papers-container p {
-    font-size: 16px;
+    font-size: 20px;
+    font-weight: 300;
 }
 
 .indigenous-map {
@@ -404,14 +405,22 @@ info-modal {
 }
 
 .loading-message {
-    font-size: 1.2em; /* Larger font size */
-    color: #ffffff; /* White text color */
-    background-color: var(--color-third); /* Bootstrap primary color */
-    padding: 10px 15px; /* Padding around the text */
-    border-radius: 5px; /* Rounded corners */
-    text-align: center; /* Center the text */
-    margin-bottom: 10px; /* Space below the message */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    font-size: 1.2em;
+    /* Larger font size */
+    color: #ffffff;
+    /* White text color */
+    background-color: var(--color-third);
+    /* Bootstrap primary color */
+    padding: 10px 15px;
+    /* Padding around the text */
+    border-radius: 5px;
+    /* Rounded corners */
+    text-align: center;
+    /* Center the text */
+    margin-bottom: 10px;
+    /* Space below the message */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow */
 }
 
 .about-container {
@@ -419,6 +428,34 @@ info-modal {
     align-items: center;
     padding: 0 4rem;
     gap: 20px;
+}
+
+.about-container p {
+    text-align: start;
+    color: #9c9b9b;
+}
+
+.indigenous-man {
+    width: 30%;
+    height: auto;
+}
+
+/* assets/styles.css */
+.card {
+    /* Add any specific styles for the card */
+    box-shadow: .4rem .4rem 2.4rem .2rem var(--shadow-1);
+    border-radius: 1rem;
+    transition: .2s;
+}
+
+.card:hover {
+    transform: translateY(-.2rem);
+    box-shadow: 0 0 4.4rem .2rem var(--shadow-2);
+}
+
+.card__title {
+    font-size: 1rem;
+    color: var(--light);
 }
 
 @media (min-width: 1200px) {

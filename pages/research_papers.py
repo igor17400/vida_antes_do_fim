@@ -8,10 +8,10 @@ import os
 dash.register_page(__name__, path="/research_papers", title="Research Papers")
 
 # Define the path to the JSON file
-json_file_path = os.path.join(os.path.dirname(__file__), '../data/papers.json')
+json_file_path = os.path.join(os.path.dirname(__file__), "../data/papers.json")
 
 # Load the JSON data
-with open(json_file_path, 'r') as file:
+with open(json_file_path, "r") as file:
     papers = json.load(file)
 
 # Now `papers` contains the list of dictionaries from the JSON file
@@ -29,14 +29,13 @@ layout = html.Div(
                 html.P(
                     "The papers below each focus on different aspects of Indigenous topics"
                 ),
-                html.P("Click on any one to learn more"),
             ],
         ),
         html.Div(
             className="papers-container",
             children=[
                 html.Article(
-                    className="card",
+                    className="card box",
                     id={"type": "view-card", "index": i},
                     children=[
                         html.Img(
@@ -51,7 +50,8 @@ layout = html.Div(
                                     className="card__content--container flow",
                                     children=[
                                         html.H2(
-                                            paper["title"], className="card__title"
+                                            paper["title"],
+                                            className="card__title box__title",
                                         ),
                                     ],
                                 ),
@@ -72,6 +72,7 @@ layout = html.Div(
             ],
             id="paper-modal",
             is_open=False,
+            size="lg",
         ),
     ],
 )
@@ -104,12 +105,18 @@ def display_paper_details(view_clicks, close_click, ids, is_open):
         paper = papers[index]
         content = html.Div(
             [
-                html.P(paper["abstract"]),
+                html.P(paper["abstract"], style={"font-style": "italic"}),
                 html.P(f"Date: {paper['date']}"),
                 html.A(
                     "Read Full Paper",
                     href=paper["link"],
                     target="_blank",
+                    className="paper-link",
+                ),
+                html.A(
+                    "GitHub Repository" if paper["github"] else "Code not available",
+                    href=paper["github"] if paper["github"] else "#",
+                    target="_blank" if paper["github"] else "",
                     className="paper-link",
                 ),
             ]

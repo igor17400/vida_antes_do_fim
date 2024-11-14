@@ -97,14 +97,11 @@ layout = html.Div(
             children=[
                 html.P(
                     "One of the ways we can learn about Indigenous communities is by learning about their culture specially with a knowledge from where they live.",
-                    style={"text-align": "center"},
                 ),
                 html.P(
-                    "Click on any region to learn more about the indigenous community from that place",
-                    style={"text-align": "center"},
+                    "Click on any region to learn more about the indigenous community from that place.",
                 ),
             ],
-            style={"width": "100%", "text-align": "center"},
         ),
         # Add the map here with loading spinner
         html.Div(
@@ -151,14 +148,14 @@ layout = html.Div(
             [
                 html.A(
                     html.Button(
-                        "About Indigenous Populations",
+                        "Indigenous Communities",
                         className="cta-button cta-button-secondary",
                     ),
                     href="/indigenous_populations",
                 ),
                 html.A(
                     html.Button(
-                        "View Research Papers",
+                        "Research Papers",
                         className="cta-button cta-button-primary",
                     ),
                     href="/research_papers",
@@ -174,12 +171,10 @@ layout = html.Div(
                     className="indigenous-man",
                 ),
                 html.P(
-                    "This project aims to compile and summarize the numerous works and contributions dedicated to the preservation and support of Indigenous communities. By gathering these resources in one place, we hope to make it easier for people to explore the ways in which science, technology, and various initiatives have worked towards uplifting Indigenous groups. Whether you're a researcher, activist, or someone simply interested in learning more, this collection offers a wide range of insights into how Indigenous knowledge and cultures are being preserved and integrated into modern advancements.",
-                    style={"text-align": "center"},
+                    "This project aims to compile and summarize the numerous works and contributions dedicated to the preservation and support of Indigenous communities. By gathering these resources in one place, we hope to make it easier for people to explore the ways in which science, technology, and various initiatives have worked towards uplifting Indigenous groups.",
                 ),
                 html.P(
-                    "Additionally, our goal is to increase awareness and understanding of Indigenous cultures by providing a platform that highlights the rich history, traditions, and ongoing struggles of these communities. Through this project, we aim to shed light on the importance of preserving Indigenous heritage, not just for the communities themselves but for the world at large. We hope that this resource will inspire further research, collaboration, and support for Indigenous peoples globally, promoting a deeper connection to their cultural significance and the challenges they face.",
-                    style={"text-align": "center"},
+                    "Additionally, our goal is to increase awareness and understanding of Indigenous cultures by providing a platform that highlights the rich history, traditions, and ongoing struggles of these communities. Promoting a deeper connection to their cultural significance and the challenges they face.",
                 ),
             ],
         ),
