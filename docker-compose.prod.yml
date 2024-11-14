@@ -1,11 +1,12 @@
 version: '3.8'
 
 services:
-  dash_app:
+  ind_container:
     build:
       context: .
       dockerfile: Dockerfile
-    expose:
-      - 8089
+    container_name: ind_container
+    volumes:
+      - .:/app  # Mount the current directory to the container for live updates
     ports:
-      - "8050:8089"
+      - "8050:8089"  # Map port 8089 on the host to port 8089 in the container
