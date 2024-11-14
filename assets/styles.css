@@ -181,6 +181,7 @@ p {
     color: white;
     text-align: center;
     padding: 2rem;
+    width: 70vw; /* Set width to occupy 70% of the screen */
 }
 
 .hero-image-container {
