@@ -10,3 +10,5 @@ APP_PORT = int(os.environ.get('PORT'))
 
 bind = f'{APP_HOST}:{APP_PORT}'
 workers = 2
+threads = 4
+timeout = 120

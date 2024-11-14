@@ -4,7 +4,7 @@ from shapely import wkt
 
 
 def load_indigenous_data():
-    df = pd.read_csv("../large_files/tis_poligonais.csv")
+    df = pd.read_csv("./large_files/tis_poligonais.csv")
     df = df.iloc[:50]
     df["geometry"] = df["the_geom"].apply(
         lambda x: wkt.loads(x) if pd.notnull(x) else None
