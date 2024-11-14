@@ -8,7 +8,7 @@ import os
 dash.register_page(__name__, path="/research_papers", title="Research Papers")
 
 # Define the path to the JSON file
-json_file_path = os.path.join("./data/papers.json")
+json_file_path = os.path.join("../data/papers.json")
 
 # Load the JSON data
 with open(json_file_path, "r") as file:
